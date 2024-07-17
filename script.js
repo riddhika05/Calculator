@@ -1,7 +1,8 @@
 const container=document.querySelector(".container");
 const display=document.querySelector(".display");
+let exp;
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,c,plumi,div,one,two]
+fun=[ac,c,plumi,div,seven,eight,nine,one,two]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -30,12 +31,13 @@ function one()
 {
     display.textContent+="1";
     console.log(1);
-   
+  
 }
 function two()
 {
     display.textContent+="2";
     console.log(2);
+    
    
 }
 function ac(){
@@ -51,8 +53,22 @@ function c()
 function plumi()
 {
     display.textContent= - + display.textContent;
+    exp=-exp;
 }
 function div()
 {
     display.textContent+="÷";
+    
+}
+function seven()
+{
+    display.textContent+="7";
+}
+function eight()
+{
+    display.textContent+="8";
+}
+function nine()
+{
+    display.textContent+="9";
 }
