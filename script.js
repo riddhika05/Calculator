@@ -2,7 +2,7 @@ const container=document.querySelector(".container");
 const display=document.querySelector(".display");
 let exp;
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,c,plumi,div,seven,eight,nine,mul]
+fun=[ac,c,plumi,div,seven,eight,nine,mul,four,five,six,sub,one,two,three,add,per,zero,dot]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -77,4 +77,49 @@ function mul()
 {
     display.textContent+="×";
     
+}
+function four()
+{
+    display.textContent+="4";
+
+}
+function five()
+{
+    display.textContent+="5";
+}
+function six()
+{
+    display.textContent+="6";
+}
+function sub()
+{
+    display.textContent+="-";
+}
+function one()
+{
+    display.textContent+="1";
+}
+function two()
+{
+    display.textContent+="2";
+}
+function three()
+{
+    display.textContent+="3";
+}
+function zero()
+{
+    display.textContent+="0";
+}
+function per()
+{
+    display.textContent+="%";
+}
+function dot()
+{
+    display.textContent+="."; 
+}
+function add()
+{
+    display.textContent+="-";
 }
