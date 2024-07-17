@@ -2,7 +2,7 @@ const container=document.querySelector(".container");
 const display=document.querySelector(".display");
 let exp;
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,c,plumi,div,seven,eight,nine,one,two]
+fun=[ac,c,plumi,div,seven,eight,nine,mul]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -51,9 +51,10 @@ function c()
        display.textContent="";
 }
 function plumi()
-{
-    display.textContent= - + display.textContent;
-    exp=-exp;
+{   if(display.textContent.charAt(0)!="-")
+    display.textContent= "-"+ display.textContent;
+    else
+    display.textContent= display.textContent.slice(1);
 }
 function div()
 {
@@ -71,4 +72,9 @@ function eight()
 function nine()
 {
     display.textContent+="9";
+}
+function mul()
+{
+    display.textContent+="×";
+    
 }
