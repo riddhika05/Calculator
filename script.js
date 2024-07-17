@@ -1,7 +1,7 @@
 const container=document.querySelector(".container");
 const display=document.querySelector(".display");
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,c,plumi]
+fun=[ac,c,plumi,div,one,two]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -20,6 +20,7 @@ for(let i=0;i<20;i++)
     button.style.color="#2563EB";
     button.style.fontSize="20px";
     button.style.fontWeight="700";
+   
 
     // button.style.=
     button.addEventListener('click',fun[i]);
@@ -50,4 +51,8 @@ function c()
 function plumi()
 {
     display.textContent= - + display.textContent;
+}
+function div()
+{
+    display.textContent+="÷";
 }
