@@ -1,7 +1,7 @@
 const container=document.querySelector(".container");
 const display=document.querySelector(".display");
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,one,two]
+fun=[ac,c,one,two]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -25,17 +25,25 @@ for(let i=0;i<20;i++)
     button.addEventListener('click',fun[i]);
     container.appendChild(button);
  }
-function one()
-{
-    display.textContent+=" 1 ";
-    console.log(1);
-
-}
-function two()
-{
-    display.textContent+=" 2 ";
-    console.log(2);
-}
+// function one()
+// {
+//     display.textContent+="1";
+//     console.log(1);
+   
+// }
+// function two()
+// {
+//     display.textContent+="2";
+//     console.log(2);
+   
+// }
 function ac(){
    display.textContent="";
+}
+function c()
+{
+    if(display.textContent.length>1)
+        display.textContent=display.textContent.slice(0,-1);
+       else
+       display.textContent="";
 }
