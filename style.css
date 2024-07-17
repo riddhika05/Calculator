@@ -16,15 +16,24 @@ body
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-.display
+.box
 {
   
     width:350px;
     height:200px;
-    margin: 0 auto;
-    border-bottom: 1px solid rgb(75, 73, 73);
-
+    border-bottom: 1px solid rgb(75, 73, 73); 
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+.display
+{    color:white;
+     text-align: right;
+     padding-right: 30px;
+     font-size: 25px;
+     font-family: sans-serif;
+     font-weight:600 ;
+   
   
 }
-
    

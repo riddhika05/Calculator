@@ -1,7 +1,7 @@
 const container=document.querySelector(".container");
 const display=document.querySelector(".display");
 arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-// fun=[one,two]
+fun=[ac,one,two]
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -22,18 +22,20 @@ for(let i=0;i<20;i++)
     button.style.fontWeight="700";
 
     // button.style.=
-    // button.addEventListener('click',fun[i]);
+    button.addEventListener('click',fun[i]);
     container.appendChild(button);
  }
-// function one()
-// {
-//     display.textContent+="1";
-//    display.style.color="white";
+function one()
+{
+    display.textContent+=" 1 ";
+    console.log(1);
 
-// }
-// function two()
-// {
-//     display.textContent+="2";
-//     display.style.color="white";
-
-// }
+}
+function two()
+{
+    display.textContent+=" 2 ";
+    console.log(2);
+}
+function ac(){
+   display.textContent="";
+}
