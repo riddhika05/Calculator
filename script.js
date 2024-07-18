@@ -1,8 +1,8 @@
 const container=document.querySelector(".container");
 const display=document.querySelector(".display");
-let exp;
-arr=["AC","C","+/ -","÷",7,8,9,"X",4,5,6,"-",1,2,3,"+","%",0,".","="]
-fun=[ac,c,plumi,div,seven,eight,nine,mul,four,five,six,sub,one,two,three,add,per,zero,dot]
+const arr=["AC","C","+/ -","÷",7,8,9,"×",4,5,6,"-",1,2,3,"+","%",0,".","="]
+const fun=[ac,c,plumi,div,seven,eight,nine,mul,four,five,six,sub,one,two,three,add,per,zero,dot]
+let flag=0;
 for(let i=0;i<20;i++)
  {const button=document.createElement("button");
     if(i!=19)
@@ -31,17 +31,20 @@ function one()
 {
     display.textContent+="1";
     console.log(1);
+   
   
 }
 function two()
 {
     display.textContent+="2";
     console.log(2);
+   
     
    
 }
 function ac(){
    display.textContent="";
+   
 }
 function c()
 {
@@ -49,6 +52,8 @@ function c()
         display.textContent=display.textContent.slice(0,-1);
        else
        display.textContent="";
+    
+
 }
 function plumi()
 {   if(display.textContent.charAt(0)!="-")
@@ -57,55 +62,66 @@ function plumi()
     display.textContent= display.textContent.slice(1);
 }
 function div()
-{
+{  
+    if(flag==1)
+    display.textContent=display.textContent.slice(0,-1)+"÷";
+    else
     display.textContent+="÷";
-    
+    flag=1;
+     
 }
 function seven()
 {
     display.textContent+="7";
+  
 }
 function eight()
 {
     display.textContent+="8";
+   
 }
 function nine()
 {
     display.textContent+="9";
+   
 }
 function mul()
 {
-    display.textContent+="×";
     
+    if(flag==1)
+        display.textContent=display.textContent.slice(0,-1)+"×";
+        else
+        display.textContent+="×";
+        flag=1;
 }
 function four()
 {
     display.textContent+="4";
-
+   
 }
 function five()
 {
     display.textContent+="5";
+   
 }
 function six()
 {
     display.textContent+="6";
+  
 }
 function sub()
 {
-    display.textContent+="-";
+    if(flag==1)
+        display.textContent=display.textContent.slice(0,-1)+"-";
+        else
+        display.textContent+="-";
+        flag=1;
 }
-function one()
-{
-    display.textContent+="1";
-}
-function two()
-{
-    display.textContent+="2";
-}
+
 function three()
 {
     display.textContent+="3";
+   
 }
 function zero()
 {
@@ -113,13 +129,24 @@ function zero()
 }
 function per()
 {
-    display.textContent+="%";
+    if(flag==1)
+        display.textContent=display.textContent.slice(0,-1)+"%";
+        else
+        display.textContent+="%";
+        flag=1;
+  
 }
 function dot()
 {
     display.textContent+="."; 
+  
+    
 }
 function add()
 {
-    display.textContent+="-";
+    if(flag==1)
+        display.textContent=display.textContent.slice(0,-1)+"+";
+        else
+        display.textContent+="+";
+        flag=1;
 }
