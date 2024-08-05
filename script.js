@@ -263,8 +263,7 @@ function applyOp(op, b, a)
        return a * b;
    case '/':
        if (b == 0)
-       {
-           document.write("Cannot divide by zero");
+       {   return "Error";
        }
        return parseFloat(a / b);
    }
