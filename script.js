@@ -3,6 +3,7 @@ const display = document.querySelector(".display");
 const arr = ["AC", "C", "+/ -", "÷", 7, 8, 9, "×", 4, 5, 6, "-", 1, 2, 3, "+", "%", 0, ".", "="]
 const fun = [ac, c, plumi, div, seven, eight, nine, mul, four, five, six, sub, one, two, three, add, per, zero, dot,operate]
 let flag = 0;
+let exp="";
 for (let i = 0; i < 20; i++) {
     const button = document.createElement("button");
     if (i != 19)
@@ -29,6 +30,7 @@ for (let i = 0; i < 20; i++) {
 }
 function one() {
     display.textContent += "1";
+    exp += "1";
     console.log(1);
     flag = 0;
 
@@ -36,6 +38,7 @@ function one() {
 }
 function two() {
     display.textContent += "2";
+    exp += "2";
     console.log(2);
     flag = 0;
 
@@ -44,11 +47,15 @@ function two() {
 }
 function ac() {
     display.textContent = "";
+     exp = "";
 
 }
 function c() {
     if (display.textContent.length > 1)
-        display.textContent = display.textContent.slice(0, -1);
+       { display.textContent = display.textContent.slice(0, -1);
+          exp =exp.slice(0, -1);
+
+       }
     else
         display.textContent = "";
 
@@ -68,68 +75,92 @@ function plumi() {
     else
     if(display.textContent.length!=1)
         display.textContent =  display.textContent.charAt(0)+"("+ "-" + display.textContent.slice(1)+")";
+    
 }
 function div() {
     if (flag == 1)
-        display.textContent = display.textContent.slice(0, -1) + " ÷ ";
+        {display.textContent = display.textContent.slice(0, -1) + " ÷ ";
+          exp=exp.slice(0,-1)+" / ";
+        }
     else
-        display.textContent += " ÷ ";
+       {display.textContent += " ÷ ";
+         exp += " / ";}
     flag = 1;
 
 }
 function seven() {
     display.textContent += "7";
+     exp += "7";
     flag = 0;
+    
 
 }
 function eight() {
     display.textContent += "8";
     flag = 0;
+    exp += "8";
 
 }
 function nine() {
     display.textContent += "9";
     flag = 0;
+    exp+= "9";
 
 }
 function mul() {
 
     if (flag == 1)
-        display.textContent = display.textContent.slice(0, -1) + " × ";
+        {  exp =exp.slice(0, -1) + " × ";
+           exp= exp.slice(0, -1) + " * ";
+        }
     else
-        display.textContent += " × ";
+       { display.textContent += " × ";
+         exp+= " * ";
+
+       }
     flag = 1;
 }
 function four() {
     display.textContent += "4";
     flag = 0;
+     exp += "4";
 }
 function five() {
     display.textContent += "5";
     flag = 0;
+    exp += "5";
 
 }
 function six() {
     display.textContent += "6";
     flag = 0;
+    exp += "6";
 
 }
 function sub() {
     if (flag == 1)
-        display.textContent = display.textContent.slice(0, -1) + " - ";
+       { display.textContent = display.textContent.slice(0, -1) + " - ";
+          exp =exp.slice(0, -1) + " - ";
+       }
     else
-        display.textContent += "-";
+       { display.textContent += " - ";
+        exp+=" - ";}
+
     flag = 1;
+  
 }
 
 function three() {
     display.textContent += "3";
     flag = 0;
+    exp += "3";
 
 }
 function zero() {
     display.textContent += "0";
     flag = 0;
+    exp += "0";
+   
 }
 function per() {
     if (flag == 1)
@@ -146,12 +177,96 @@ function dot() {
 }
 function add() {
     if (flag == 1)
-        display.textContent = display.textContent.slice(0, -1) + " + ";
+        { display.textContent = display.textContent.slice(0, -1) + " + ";
+           exp = exp.slice(0, -1) + " + ";
+        }
+
     else
-        display.textContent += " + ";
+       { display.textContent += " + ";
+          exp+= " + ";
+
+       }
     flag = 1;
+    
 }
 function operate()
-{  
-  
+{   console.log(exp);
+    let tokens = exp .split('');
+    console.log(tokens);
+    let values = [];
+    let ops = [];
+
+   for (let i = 0; i < tokens.length; i++)
+   {
+       if (tokens[i] == ' ')
+       {
+           continue;
+       }
+       if (tokens[i] >= '0' && tokens[i] <= '9')
+       {
+           let sbuf = "";
+           while (i < tokens.length &&
+                   tokens[i] >= '0' &&
+                       tokens[i] <= '9')
+           {
+               sbuf = sbuf + tokens[i++];
+           }
+           values.push(parseInt(sbuf, 10));
+             i--;
+        }
+       else if (tokens[i] == '+' ||
+                tokens[i] == '-' ||
+                tokens[i] == '*' ||
+                tokens[i] == '/')
+       {
+           while (ops.length > 0 &&
+                    hasPrecedence(tokens[i],
+                                ops[ops.length - 1]))
+           {
+             values.push(applyOp(ops.pop(),
+                              values.pop(),
+                            values.pop()));
+           }
+           ops.push(tokens[i]);
+       }
+   }
+   while (ops.length > 0)
+   {
+       values.push(applyOp(ops.pop(),
+                        values.pop(),
+                       values.pop()));
+   }
+//   console.log(values.pop());
+  display.textContent=values.pop();
+}
+function hasPrecedence(op1, op2)
+{
+   if ((op1 == '*' || op1 == '/') &&
+          (op2 == '+' || op2 == '-'))
+   {
+       return false;
+   }
+   else
+   {
+       return true;
+   }
+}
+function applyOp(op, b, a)
+{
+   switch (op)
+   {
+   case '+':
+       return a + b;
+   case '-':
+       return a - b;
+   case '*':
+       return a * b;
+   case '/':
+       if (b == 0)
+       {
+           document.write("Cannot divide by zero");
+       }
+       return parseFloat(a / b);
+   }
+   return 0;
 }
