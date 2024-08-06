@@ -237,7 +237,13 @@ function operate()
                        values.pop()));
    }
 //   console.log(values.pop());
-  display.textContent=values.pop();
+  let val=values.pop();
+  console.log(typeof(val));
+  if(typeof(val)!='string' && !isNaN(val))
+  display.textContent=val;
+  else
+  display.textContent="Error";
+  
 }
 function hasPrecedence(op1, op2)
 {
@@ -263,7 +269,8 @@ function applyOp(op, b, a)
        return a * b;
    case '/':
        if (b == 0)
-       {   return "Error";
+       {  
+         return "Error";
        }
        return parseFloat(a / b);
    }
