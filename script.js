@@ -164,14 +164,19 @@ function zero() {
 }
 function per() {
     if (flag == 1)
-        display.textContent = display.textContent.slice(0, -1) + " % ";
+       { display.textContent = display.textContent.slice(0, -1) + " % ";
+         exp = exp.slice(0, -1) + " % ";
+       }
     else
-        display.textContent += " % ";
+       { display.textContent += " % ";
+          exp+= " % ";
+       }
     flag = 1;
 
 }
 function dot() {
     display.textContent += ".";
+    exp+='.';
 
 
 }
@@ -207,17 +212,20 @@ function operate()
            let sbuf = "";
            while (i < tokens.length &&
                    tokens[i] >= '0' &&
-                       tokens[i] <= '9')
+                       tokens[i] <= '9' || tokens[i]==".")
            {
                sbuf = sbuf + tokens[i++];
            }
-           values.push(parseInt(sbuf, 10));
+           console.log(sbuf);
+           values.push(parseFloat(sbuf, 10));
              i--;
         }
        else if (tokens[i] == '+' ||
                 tokens[i] == '-' ||
                 tokens[i] == '*' ||
-                tokens[i] == '/')
+                tokens[i] == '/' ||
+                 tokens[i] == '%' 
+            )
        {
            while (ops.length > 0 &&
                     hasPrecedence(tokens[i],
@@ -247,7 +255,7 @@ function operate()
 }
 function hasPrecedence(op1, op2)
 {
-   if ((op1 == '*' || op1 == '/') &&
+   if ((op1 == '*' || op1 == '/' || op1=='%' ) &&
           (op2 == '+' || op2 == '-'))
    {
        return false;
@@ -272,7 +280,9 @@ function applyOp(op, b, a)
        {  
          return "Error";
        }
-       return parseFloat(a / b);
+       return parseFloat((a/b).toPrecision(12));
+    case '%': console.log((a*b)/100);
+        return  parseFloat(((a*b)/100).toPrecision(12));
    }
    return 0;
 }
