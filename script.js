@@ -110,7 +110,7 @@ function nine() {
 function mul() {
 
     if (flag == 1)
-        {  exp =exp.slice(0, -1) + " × ";
+        {  display.textContent =display.textContent.slice(0, -1) + " × ";
            exp= exp.slice(0, -1) + " * ";
         }
     else
@@ -270,11 +270,11 @@ function applyOp(op, b, a)
    switch (op)
    {
    case '+':
-       return a + b;
+       return parseFloat((a+b).toPrecision(12));
    case '-':
-       return a - b;
+       return parseFloat((a-b).toPrecision(12));
    case '*':
-       return a * b;
+       return parseFloat((a*b).toPrecision(12));
    case '/':
        if (b == 0)
        {  
