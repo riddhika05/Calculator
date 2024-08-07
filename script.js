@@ -52,8 +52,8 @@ function ac() {
 }
 function c() {
     if (display.textContent.length > 1)
-       { display.textContent = display.textContent.slice(0, -1);
-          exp =exp.slice(0, -1);
+       { display.textContent = display.textContent.slice(0, -2);
+          exp =exp.slice(0, -2);
 
        }
     else
@@ -78,9 +78,10 @@ function plumi() {
     
 }
 function div() {
+    console.log(flag);
     if (flag == 1)
-        {display.textContent = display.textContent.slice(0, -1) + " ÷ ";
-          exp=exp.slice(0,-1)+" / ";
+        {display.textContent = display.textContent.slice(0, -2) + " ÷ ";
+          exp=exp.slice(0,-2)+" / ";
         }
     else
        {display.textContent += " ÷ ";
@@ -110,8 +111,8 @@ function nine() {
 function mul() {
 
     if (flag == 1)
-        {  display.textContent =display.textContent.slice(0, -1) + " × ";
-           exp= exp.slice(0, -1) + " * ";
+        {  display.textContent =display.textContent.slice(0, -2) + " × ";
+           exp= exp.slice(0, -2) + " * ";
         }
     else
        { display.textContent += " × ";
@@ -139,8 +140,8 @@ function six() {
 }
 function sub() {
     if (flag == 1)
-       { display.textContent = display.textContent.slice(0, -1) + " - ";
-          exp =exp.slice(0, -1) + " - ";
+       { display.textContent = display.textContent.slice(0, -2) + " - ";
+          exp =exp.slice(0, -2) + " - ";
        }
     else
        { display.textContent += " - ";
@@ -164,8 +165,8 @@ function zero() {
 }
 function per() {
     if (flag == 1)
-       { display.textContent = display.textContent.slice(0, -1) + " % ";
-         exp = exp.slice(0, -1) + " % ";
+       { display.textContent = display.textContent.slice(0, -2) + " % ";
+         exp = exp.slice(0, -2) + " % ";
        }
     else
        { display.textContent += " % ";
@@ -182,8 +183,8 @@ function dot() {
 }
 function add() {
     if (flag == 1)
-        { display.textContent = display.textContent.slice(0, -1) + " + ";
-           exp = exp.slice(0, -1) + " + ";
+        { display.textContent = display.textContent.slice(0, -2) + " + ";
+           exp = exp.slice(0, -2) + " + ";
         }
 
     else
