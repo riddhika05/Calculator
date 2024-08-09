@@ -9,7 +9,7 @@ for (let i = 0; i < 20; i++) {
     if (i != 19)
         button.style.backgroundColor = "rgb(55,55,55)";
     else
-        button.style.backgroundColor = "#2563EB";
+        button.style.backgroundColor = "#AC94FA";
     button.style.width = "81px";
     button.style.height = "50px";
     button.textContent = arr[i];
@@ -19,7 +19,7 @@ for (let i = 0; i < 20; i++) {
     if (i == 4 || i == 5 || i == 6 || i == 10 || i == 8 || i == 9 || i == 12 || i == 13 || i == 14 || i == 16 || i == 17 || i == 18 || i == 19)
         button.style.color = "white";
     else
-        button.style.color = "#2563EB";
+    button.style.color = "#AC94FA";
     button.style.fontSize = "20px";
     button.style.fontWeight = "700";
 
