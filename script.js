@@ -1,9 +1,9 @@
 const container = document.querySelector(".container");
 const display = document.querySelector(".display");
 const arr = ["AC", "C", "+/ -", "÷", 7, 8, 9, "×", 4, 5, 6, "-", 1, 2, 3, "+", "%", 0, ".", "="]
-const fun = [ac, c, plumi, div, seven, eight, nine, mul, four, five, six, sub, one, two, three, add, per, zero, dot,operate]
+const fun = [ac, c, plumi, div, seven, eight, nine, mul, four, five, six, sub, one, two, three, add, per, zero, dot, operate]
 let flag = 0;
-let exp="";
+let exp = "";
 for (let i = 0; i < 20; i++) {
     const button = document.createElement("button");
     if (i != 19)
@@ -47,53 +47,54 @@ function two() {
 }
 function ac() {
     display.textContent = "";
-     exp = "";
+    exp = "";
 
 }
 function c() {
-    if (display.textContent.length > 1)
-       { display.textContent = display.textContent.slice(0, -2);
-          exp =exp.slice(0, -2);
+    if (display.textContent.length > 1) {
+        display.textContent = display.textContent.slice(0, -2);
+        exp = exp.slice(0, -2);
 
-       }
+    }
     else
         display.textContent = "";
 
 
 }
 function plumi() {
-    if (display.textContent.charAt(0) != "%" && display.textContent.charAt(0) != "×" && display.textContent.charAt(0) != "÷") {
-        if (display.textContent.charAt(0) != "-") {
-            if (display.textContent.charAt(0) == "+")
-                display.textContent = "-"+"(" + display.textContent.slice(1)+")";
-            else
-                display.textContent ="("+ "-" + display.textContent+")";
-        }
+    let l = display.textContent.length;let i;
+    for ( i = l - 1; i >= 0; i--) {
+        if (display.textContent[i] == "+" || display.textContent[i] == "-" || display.textContent[i] == "%" || display.textContent[i] == "×" || display.textContent[i] == "÷")
+            break;
+                                     }
+         if(i!=-1)
+       {display.textContent=display.textContent.slice(0,i+1)+" ( - "+display.textContent.slice(i+2)+")";
+        exp=exp.slice(0,i+1)+" (5 - 6)* "+exp.slice(i+2);}
         else
-            display.textContent = display.textContent.slice(1);
-    }
-    else
-    if(display.textContent.length!=1)
-        display.textContent =  display.textContent.charAt(0)+"("+ "-" + display.textContent.slice(1)+")";
-    
+        {
+            display.textContent="( -"+display.textContent+")";
+            exp="(5 -6 )*"+exp;
+        }
+
 }
 function div() {
     console.log(flag);
-    if (flag == 1)
-        {display.textContent = display.textContent.slice(0, -2) + " ÷ ";
-          exp=exp.slice(0,-2)+" / ";
-        }
-    else
-       {display.textContent += " ÷ ";
-         exp += " / ";}
+    if (flag == 1) {
+        display.textContent = display.textContent.slice(0, -2) + " ÷ ";
+        exp = exp.slice(0, -2) + " / ";
+    }
+    else {
+        display.textContent += " ÷ ";
+        exp += " / ";
+    }
     flag = 1;
 
 }
 function seven() {
     display.textContent += "7";
-     exp += "7";
+    exp += "7";
     flag = 0;
-    
+
 
 }
 function eight() {
@@ -105,26 +106,26 @@ function eight() {
 function nine() {
     display.textContent += "9";
     flag = 0;
-    exp+= "9";
+    exp += "9";
 
 }
 function mul() {
 
-    if (flag == 1)
-        {  display.textContent =display.textContent.slice(0, -2) + " × ";
-           exp= exp.slice(0, -2) + " * ";
-        }
-    else
-       { display.textContent += " × ";
-         exp+= " * ";
+    if (flag == 1) {
+        display.textContent = display.textContent.slice(0, -2) + " × ";
+        exp = exp.slice(0, -2) + " * ";
+    }
+    else {
+        display.textContent += " × ";
+        exp += " * ";
 
-       }
+    }
     flag = 1;
 }
 function four() {
     display.textContent += "4";
     flag = 0;
-     exp += "4";
+    exp += "4";
 }
 function five() {
     display.textContent += "5";
@@ -139,16 +140,17 @@ function six() {
 
 }
 function sub() {
-    if (flag == 1)
-       { display.textContent = display.textContent.slice(0, -2) + " - ";
-          exp =exp.slice(0, -2) + " - ";
-       }
-    else
-       { display.textContent += " - ";
-        exp+=" - ";}
+    if (flag == 1) {
+        display.textContent = display.textContent.slice(0, -2) + " - ";
+        exp = exp.slice(0, -2) + " - ";
+    }
+    else {
+        display.textContent += " - ";
+        exp += " - ";
+    }
 
     flag = 1;
-  
+
 }
 
 function three() {
@@ -161,129 +163,134 @@ function zero() {
     display.textContent += "0";
     flag = 0;
     exp += "0";
-   
+
 }
 function per() {
-    if (flag == 1)
-       { display.textContent = display.textContent.slice(0, -2) + " % ";
-         exp = exp.slice(0, -2) + " % ";
-       }
-    else
-       { display.textContent += " % ";
-          exp+= " % ";
-       }
+    if (flag == 1) {
+        display.textContent = display.textContent.slice(0, -2) + " % ";
+        exp = exp.slice(0, -2) + " % ";
+    }
+    else {
+        display.textContent += " % ";
+        exp += " % ";
+    }
     flag = 1;
 
 }
 function dot() {
     display.textContent += ".";
-    exp+='.';
+    exp += '.';
 
 
 }
 function add() {
-    if (flag == 1)
-        { display.textContent = display.textContent.slice(0, -2) + " + ";
-           exp = exp.slice(0, -2) + " + ";
-        }
+    if (flag == 1) {
+        display.textContent = display.textContent.slice(0, -2) + " + ";
+        exp = exp.slice(0, -2) + " + ";
+    }
 
-    else
-       { display.textContent += " + ";
-          exp+= " + ";
+    else {
+        display.textContent += " + ";
+        exp += " + ";
 
-       }
+    }
     flag = 1;
-    
+
 }
-function operate()
-{   console.log(exp);
-    let tokens = exp .split('');
+function operate() {
+    console.log(exp);
+    let tokens = exp.split('');
     console.log(tokens);
     let values = [];
     let ops = [];
 
-   for (let i = 0; i < tokens.length; i++)
-   {
-       if (tokens[i] == ' ')
-       {
-           continue;
-       }
-       if (tokens[i] >= '0' && tokens[i] <= '9')
-       {
-           let sbuf = "";
-           while (i < tokens.length &&
-                   tokens[i] >= '0' &&
-                       tokens[i] <= '9' || tokens[i]==".")
-           {
-               sbuf = sbuf + tokens[i++];
-           }
-           console.log(sbuf);
-           values.push(parseFloat(sbuf, 10));
-             i--;
+    for (let i = 0; i < tokens.length; i++) {
+        if (tokens[i] == ' ') {
+            continue;
         }
-       else if (tokens[i] == '+' ||
-                tokens[i] == '-' ||
-                tokens[i] == '*' ||
-                tokens[i] == '/' ||
-                 tokens[i] == '%' 
-            )
-       {
-           while (ops.length > 0 &&
-                    hasPrecedence(tokens[i],
-                                ops[ops.length - 1]))
-           {
-             values.push(applyOp(ops.pop(),
-                              values.pop(),
-                            values.pop()));
-           }
-           ops.push(tokens[i]);
-       }
-   }
-   while (ops.length > 0)
-   {
-       values.push(applyOp(ops.pop(),
-                        values.pop(),
-                       values.pop()));
-   }
-//   console.log(values.pop());
-  let val=values.pop();
-  console.log(typeof(val));
-  if(typeof(val)!='string' && !isNaN(val))
-  display.textContent=val;
-  else
-  display.textContent="Error";
-  
+        if (tokens[i] >= '0' && tokens[i] <= '9') {
+            let sbuf = "";
+            while (i < tokens.length &&
+                tokens[i] >= '0' &&
+                tokens[i] <= '9' || tokens[i] == ".") {
+                sbuf = sbuf + tokens[i++];
+            }
+            console.log(sbuf);
+            values.push(parseFloat(sbuf, 10));
+            i--;
+        }
+        else if (tokens[i] == '(')
+            {
+                ops.push(tokens[i]);
+            }
+            else if (tokens[i] == ')')
+                {
+                    while (ops[ops.length - 1] != '(')
+                    {
+                      values.push(applyOp(ops.pop(),
+                                       values.pop(),
+                                      values.pop()));
+                    }
+                    ops.pop();
+                }
+        else if (tokens[i] == '+' ||
+            tokens[i] == '-' ||
+            tokens[i] == '*' ||
+            tokens[i] == '/' ||
+            tokens[i] == '%'
+        ) {
+            while (ops.length > 0 &&
+                hasPrecedence(tokens[i],
+                    ops[ops.length - 1])) {
+                values.push(applyOp(ops.pop(),
+                    values.pop(),
+                    values.pop()));
+            }
+            ops.push(tokens[i]);
+        }
+    }
+    while (ops.length > 0) {
+        values.push(applyOp(ops.pop(),
+            values.pop(),
+            values.pop()));
+    }
+    //   console.log(values.pop());
+    let val = values.pop();
+    console.log(val);
+    if (typeof (val) != 'string' && !isNaN(val))
+        display.textContent = val;
+    else
+        display.textContent = "Error";
+
 }
-function hasPrecedence(op1, op2)
-{
-   if ((op1 == '*' || op1 == '/' || op1=='%' ) &&
-          (op2 == '+' || op2 == '-'))
-   {
-       return false;
-   }
-   else
-   {
-       return true;
-   }
+function hasPrecedence(op1, op2) {
+        if (op2 == '(' || op2 == ')')
+        {
+            return false;
+        }
+    if ((op1 == '*' || op1 == '/' || op1 == '%') &&
+        (op2 == '+' || op2 == '-')) {
+        return false;
+    }
+    else {
+        return true;
+    }
 }
-function applyOp(op, b, a)
-{
-   switch (op)
-   {
-   case '+':
-       return parseFloat((a+b).toPrecision(12));
-   case '-':
-       return parseFloat((a-b).toPrecision(12));
-   case '*':
-       return parseFloat((a*b).toPrecision(12));
-   case '/':
-       if (b == 0)
-       {  
-         return "Error";
-       }
-       return parseFloat((a/b).toPrecision(12));
-    case '%': console.log((a*b)/100);
-        return  parseFloat(((a*b)/100).toPrecision(12));
-   }
-   return 0;
+function applyOp(op, b, a) {
+    switch (op) {
+        case '+':
+            return parseFloat((a + b).toPrecision(12));
+        case '-':
+            return parseFloat((a - b).toPrecision(12));
+        case '*':
+            return parseFloat((a * b).toPrecision(12));
+        case '/':
+            if (b == 0) {
+                return "Error";
+            }
+            return parseFloat((a / b).toPrecision(12));
+        case '%': console.log((a * b) / 100);
+            return parseFloat(((a * b) / 100).toPrecision(12));
+    }
+    return 0;
 }
